@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry, Manzuu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #fdeff9, #ec38bc);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ec38bc;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    #heart {
+      font-size: 4rem;
+      color: #ff6b81;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    #heart:hover {
+      transform: scale(1.2);
+    }
+    #sorryMessage {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #c0392b;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Manzuuuuuuuu, I'm Sorry</h1>
+    <p>Don't reject me please...... Click the heart below to send you all my love and apologies.</p>
+    <div id="heart">❤</div>
+    <div id="sorryMessage">I love you sooooo muchhhh. Please forgive me. 💖</div>
+    <div class="footer">- With all my heart, Zaheebaaaaaaa</div>
+  </div>
+
+  <script>
+    const heart = document.getElementById('heart');
+    const message = document.getElementById('sorryMessage');
+    let clicked = false;
+    heart.addEventListener('click', () => {
+      if (!clicked) {
+        message.style.display = 'block';
+        heart.style.color = '#e74c3c';
+        clicked = true;
+      }
+    });
+  </script>
+</body>
+</html>
