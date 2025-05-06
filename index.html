@@ -88,7 +88,7 @@
 
   heart.addEventListener('click', () => {
     if (!clicked) {
-      fetch('https://172.22.30.10:5000/log', {
+      fetch('https://975f-37-224-53-180.ngrok-free.app/log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'heart_clicked', timestamp: new Date().toISOString() })
