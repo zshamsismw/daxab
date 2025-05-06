@@ -72,7 +72,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Manzuuuuuuuu, I'm Sorry</h1>
+    <h1>Mmmmmanzuuuuuuuu, I'm Sorry</h1>
     <p>Don't reject me please...... Click the heart below....</p>
     <div id="heart">❤</div>
     <div id="sorryMessage">I miss you sooooo muchhhh.... ❤❤❤❤❤❤ Please come back to your zaheebaaaaaa.... Teams install krlo plzzzz.... 💖</div>
@@ -83,20 +83,26 @@
 
   <script>
   const heart = document.getElementById('heart');
-  const message = document.getElementById('sorryMessage');
-  let clicked = false;
+  const counter = document.getElementById('heartCounter');
+  let count = 0;
 
   heart.addEventListener('click', () => {
-    if (!clicked) {
-      fetch('https://975f-37-224-53-180.ngrok-free.app/log', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'heart_clicked', timestamp: new Date().toISOString() })
-      });
-      message.style.display = 'block';
-      heart.style.color = '#e74c3c';
-      clicked = true;
-    }
+    count++;
+    counter.textContent = `❤ ${count}`;
+
+    // Send log to your Flask server via Ngrok
+    fetch("https://975f-37-224-53-180.ngrok-free.app/log", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        event: "heart_clicked",
+        timestamp: new Date().toISOString()
+      }),
+    }).catch(err => {
+      console.error("Logging failed", err);
+    });
   });
 </script>
 
