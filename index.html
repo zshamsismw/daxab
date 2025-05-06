@@ -82,21 +82,23 @@
   <div id="heartCounter">0</div>
 
   <script>
-    const heart = document.getElementById('heart');
-    const message = document.getElementById('sorryMessage');
-    const counter = document.getElementById('heartCounter');
-    let clicked = false;
-    let count = 0;
+  const heart = document.getElementById('heart');
+  const message = document.getElementById('sorryMessage');
+  let clicked = false;
 
-    heart.addEventListener('click', () => {
-      count++;
-      counter.textContent = `❤ ${count}`;
-      if (!clicked) {
-        message.style.display = 'block';
-        heart.style.color = '#e74c3c';
-        clicked = true;
-      }
-    });
-  </script>
+  heart.addEventListener('click', () => {
+    if (!clicked) {
+      fetch('http://172.22.30.10:5000/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'heart_clicked', timestamp: new Date().toISOString() })
+      });
+      message.style.display = 'block';
+      heart.style.color = '#e74c3c';
+      clicked = true;
+    }
+  });
+</script>
+
 </body>
 </html>
