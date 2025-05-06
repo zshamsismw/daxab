@@ -88,7 +88,7 @@
 
   heart.addEventListener('click', () => {
     if (!clicked) {
-      fetch('http://172.22.30.10:5000/log', {
+      fetch('https://172.22.30.10:5000/log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ action: 'heart_clicked', timestamp: new Date().toISOString() })
