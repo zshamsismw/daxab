@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>I'm Sorry, Manzuu</title>
   <style>
     body {
@@ -65,8 +65,13 @@
       bottom: 4px;
       right: 8px;
       font-size: 12px;
-      color: rgba(0, 0, 0, 0.9); /* Almost full dark */
+      color: rgba(0, 0, 0, 0.9);
       user-select: none;
+    }
+    #timePassed {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #555;
     }
   </style>
 </head>
@@ -76,7 +81,10 @@
     <p>A last message.... Click the heart below....</p>
     <div id="heart">❤</div>
     <div id="sorryMessage">I know you are gone and would never come to this page. But if ever you come, just know that I miss you sooooo muchhhh ❤❤❤❤❤❤❤ Please come back to your zaheebaaaaaa....:)))</div>
-    <div class="footer">- Waiting for you... With all my heart, Your's Zaheebuuuuuuuuu (8/May/2025 1:10 PM)</div>
+    <div class="footer">
+      - Waiting for you... With all my heart, Your's Zaheebuuuuuuuuu (8/May/2025 1:10 PM)
+      <div id="timePassed"></div>
+    </div>
   </div>
 
   <div id="heartCounter">0</div>
@@ -85,6 +93,7 @@
     const heart = document.getElementById('heart');
     const message = document.getElementById('sorryMessage');
     const counter = document.getElementById('heartCounter');
+    const timePassed = document.getElementById('timePassed');
     let clicked = false;
     let count = 0;
 
@@ -97,6 +106,23 @@
         clicked = true;
       }
     });
+
+    // Calculate time passed since 8 May 2025 1:10 PM KSA time
+    function updateTimePassed() {
+      // Date in UTC: 8 May 2025 10:10 AM UTC (KSA is UTC+3)
+      const start = new Date(Date.UTC(2025, 4, 8, 10, 10, 0));
+      const now = new Date();
+
+      const diff = now - start;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      timePassed.textContent = `Days Passed: ${days} Days ${hours} Hours ${minutes} Minutes ${seconds} Seconds.`;
+    }
+
+    updateTimePassed();
   </script>
 </body>
 </html>
