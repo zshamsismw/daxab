@@ -24,6 +24,7 @@
       border-radius: 1rem;
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
       max-width: 400px;
+      position: relative;
     }
     h1 {
       font-size: 2.5rem;
@@ -69,9 +70,12 @@
       user-select: none;
     }
     #timePassed {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      color: #555;
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: #777;
+      text-align: right;
     }
   </style>
 </head>
@@ -83,8 +87,8 @@
     <div id="sorryMessage">I know you are gone and would never come to this page. But if ever you come, just know that I miss you sooooo muchhhh ❤❤❤❤❤❤❤ Please come back to your zaheebaaaaaa....:)))</div>
     <div class="footer">
       - Waiting for you... With all my heart, Your's Zaheebuuuuuuuuu (8/May/2025 1:10 PM)
-      <div id="timePassed"></div>
     </div>
+    <div id="timePassed"></div>
   </div>
 
   <div id="heartCounter">0</div>
@@ -107,13 +111,11 @@
       }
     });
 
-    // Calculate time passed since 8 May 2025 1:10 PM KSA time
     function updateTimePassed() {
-      // Date in UTC: 8 May 2025 10:10 AM UTC (KSA is UTC+3)
-      const start = new Date(Date.UTC(2025, 4, 8, 10, 10, 0));
+      const start = new Date(Date.UTC(2025, 4, 8, 10, 10, 0)); // UTC+0 (KSA is UTC+3)
       const now = new Date();
-
       const diff = now - start;
+
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
